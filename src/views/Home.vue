@@ -1,24 +1,30 @@
 <template>
-  <v-container>
+  <v-container class="pt-5">
     
-    <v-card class="grey mb-5" elevation="0">
+    <v-card class="c-card mb-5" elevation="0">
       <div class="d-flex flex-no-wrap">
-        <v-avatar
-          size="250"
-          tile
-        >
-          <v-img src="https://api.deezer.com/artist/75798/image"></v-img>
-        </v-avatar>
-        <div class="d-flex flex-column justify-space-between pa-3">
+        <a href="javascript:;" class="c-banner">
+          <div class="wrap-img" :style="{backgroundImage: 'url('+require('../assets/adele_21.jpg')+')'}">
+            <!-- <img src="~../assets/adele_banner.jpg" alt="artist"> -->
+            <svg width="60" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="play" class="svg-inline--fa fa-play fa-w-14 fa-5x " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" color="white"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
+          </div>
+        </a>
+        <div class="c-content d-flex flex-column justify-space-between pa-3" :style="{backgroundImage: 'url('+require('../assets/adele_banner.jpg')+')'}">
           <div>
-            <v-card-title class="text-h5">
+            <v-card-title>
               Adele 21
             </v-card-title>
-            <v-card-subtitle>
-              Lo mejor de Adele <span>321, 123 seguidores</span>
+            <v-card-subtitle class="white--text">
+              Lo mejor de Adele <span class="ml-4 secondary--text">321, 123 seguidores</span>
             </v-card-subtitle>
             <v-card-text class="pb-0">
-              <p>late 16th century (as a noun denoting a place where alms were distributed): from medieval Latin eleemosynarius, from late Latin eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’ </p>
+              <v-list three-line class="pa-0">
+                <v-list-item class="pa-0">
+                  <v-list-item-content class="pa-0">
+                    <v-list-item-subtitle>late 16th century (as a noun denoting a place where alms were distributed): from medieval Latin eleemosynarius, from late Latin eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’</v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
             </v-card-text>
           </div>
           <v-card-actions>
@@ -75,13 +81,26 @@
 
     <div class="text-h5 primary--text mb-5">Resultados</div>
 
-    <div class="c-flex">
+    <div class="c-grid">
       <div class="c-col" v-for="(item, index) in 10" :key="index">
         <div>
-          <v-img aspect-ratio="1" src="https://api.deezer.com/artist/75798/image"></v-img>
+          <a href="javascript:;" class="c-banner">
+            <div class="wrap-img" :style="{backgroundImage: 'url('+require('../assets/adele_21.jpg')+')'}">
+              <!-- <img src="~../assets/adele_banner.jpg" alt="artist"> -->
+              <svg width="32" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="play" class="svg-inline--fa fa-play fa-w-14 fa-5x " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" color="white"><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg>
+            </div>
+            <v-btn
+              dark
+              icon
+              absolute
+              z-index="2"
+            >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </a>
         </div>
-        <div>Who You Are</div>
-        <div>Jessie J</div>
+        <div class="c-title">Who You Are</div>
+        <div class="c-subtitle">Jessie J</div>
       </div>
     </div>
 

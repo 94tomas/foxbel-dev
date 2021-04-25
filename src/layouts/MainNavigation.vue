@@ -42,7 +42,6 @@
       app
       elevation="0"
       color="white"
-      class="ml-6"
     >
       <v-app-bar-nav-icon color="primary" @click.stop="drawer = !drawer" v-show="!$vuetify.breakpoint.smAndUp"></v-app-bar-nav-icon>
       <!-- <v-btn
@@ -76,7 +75,7 @@
             class="text-capitalize"
           >
             <v-icon>mdi-account</v-icon>
-            <span class="grey--text">Francisco M.</span>
+            <span class="grey--text">{{ name }}</span>
           </v-btn>
         </template>
         <v-list dense min-width="200px">
@@ -110,7 +109,7 @@
                 size="100"
                 tile
               >
-                <v-img src="https://picsum.photos/seed/picsum/200/300"></v-img>
+                <v-img src="~../assets/adele_21.jpg"></v-img>
               </v-avatar>
               <div>
                 <v-card-title class="text-h5 white--text">
@@ -185,12 +184,13 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   data() {
     return {
       drawer: null,
       perDrawer: true,
+      name: '',
       links: [
         {
           title: 'Mi Librería',
@@ -218,11 +218,14 @@ export default {
     // if (localStorage.getItem('code')) {
     //   this.getDataUser()
     // }
+    this.name = localStorage.getItem('name')
   },
   methods: {
     logout() {
-      localStorage.removeItem('code')
+      localStorage.removeItem('auth')
+      localStorage.removeItem('name')
       this.$router.push('/login')
+      window.DZ.logout()
     },
     async getDataUser() {
       // await axios.get(`https://connect.deezer.com/oauth/access_token.php?app_id=475022&secret=5bbc0b653f7a9212a0bce48173297855&code=${localStorage.getItem('code')}`)
@@ -234,14 +237,17 @@ export default {
       // })
     },
     async searchPlay(event) {
+      // window.DZ.api('user/me/playlists', 'POST', {title : event}, response => {
+      //   console.log(response);
+      // });
       console.log(event);
-      await axios.get(`https://api.deezer.com/search?access_token=5bbc0b653f7a9212a0bce48173297855&q=eminem`)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+      // await axios.get(`https://api.deezer.com/search?access_token=5bbc0b653f7a9212a0bce48173297855&q=eminem`)
+      // .then(response => {
+      //   console.log(response)
+      // })
+      // .catch(error => {
+      //   console.log(error)
+      // })
     }
   },
 }

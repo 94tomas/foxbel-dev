@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import axios from 'axios'
+// import axios from 'axios'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    // path: '/foxbel-dev',
     path: '/',
     name: 'Layout',
     component: () => import('../layouts/MainNavigation.vue'),
@@ -42,34 +43,16 @@ router.beforeEach(function (to, from, next) {
   // console.log(from)
   // next()
   if (to.name != 'Login') {
-    if (localStorage.getItem('code')) {
+    if (localStorage.getItem('auth')) {
       next() 
     }
     else {
-      if (to.query.code) {
-        localStorage.setItem('code', to.query.code)
-        axios.get(`https://connect.deezer.com/oauth/access_token.php`, {
-          params: {
-            app_id: '475022',
-            secret: '5bbc0b653f7a9212a0bce48173297855',
-            code: to.query.code
-          }
-        })
-        .then(response => {
-          console.log(response)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-        next()
-      } else {
-        next({
-          name:"Login"
-        })
-      }
+      next({
+        name:"Login"
+      })
     }
   } else {
-    if (localStorage.getItem('code')) {
+    if (localStorage.getItem('auth')) {
       next({
         name:"Home"
       })

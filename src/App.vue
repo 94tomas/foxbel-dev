@@ -22,10 +22,11 @@ export default {
   // components: {
   //   MainNavigation
   // },
-  data() {
-    return {
-      
-    }
-  }
+  mounted() {
+    window.DZ.init({
+      appId  : '475022',
+      channelUrl : 'http://localhost:8080/'
+    });
+  },
 };
 </script>
