@@ -13,6 +13,7 @@
       <!-- :permanent="$vuetify.breakpoint.mdAndUp" -->
       <v-list-item class="wrap-logo">
         <v-list-item-content>
+          <!-- <a href="/foxbel-dev"> -->
           <a href="/">
             <img src="~../assets/logo.png" alt="Foxbel">
           </a>
@@ -184,13 +185,13 @@
   </div>
 </template>
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   data() {
     return {
       drawer: null,
       perDrawer: true,
-      name: '',
+      name: 'Francisco M.',
       links: [
         {
           title: 'Mi Librería',
@@ -218,14 +219,13 @@ export default {
     // if (localStorage.getItem('code')) {
     //   this.getDataUser()
     // }
-    this.name = localStorage.getItem('name')
   },
   methods: {
     logout() {
-      localStorage.removeItem('auth')
-      localStorage.removeItem('name')
-      this.$router.push('/login')
-      window.DZ.logout()
+      // localStorage.removeItem('auth')
+      // localStorage.removeItem('name')
+      // this.$router.push('/login')
+      // window.DZ.logout()
     },
     async getDataUser() {
       // await axios.get(`https://connect.deezer.com/oauth/access_token.php?app_id=475022&secret=5bbc0b653f7a9212a0bce48173297855&code=${localStorage.getItem('code')}`)
@@ -241,13 +241,19 @@ export default {
       //   console.log(response);
       // });
       console.log(event);
-      // await axios.get(`https://api.deezer.com/search?access_token=5bbc0b653f7a9212a0bce48173297855&q=eminem`)
-      // .then(response => {
-      //   console.log(response)
-      // })
-      // .catch(error => {
-      //   console.log(error)
-      // })
+      await axios.get(`https://api.deezer.com/search`, {
+        params: {
+          access_token: 'frk5YESmkY57j69JtipLXrPxziYsQTZTwNZYSlLBCwZb9ftf3Mv',
+          q: 'eminem',
+          // output: 'jsonp'
+        }
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
     }
   },
 }

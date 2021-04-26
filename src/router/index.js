@@ -7,8 +7,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    // path: '/foxbel-dev',
     path: '/',
+    // path: '/',
     name: 'Layout',
     component: () => import('../layouts/MainNavigation.vue'),
     children: [
@@ -38,39 +38,27 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach(function (to, from, next) {
-  // console.log(to)
-  // console.log(from)
-  // next()
-  if (to.name != 'Login') {
-    if (localStorage.getItem('auth')) {
-      next() 
-    }
-    else {
-      next({
-        name:"Login"
-      })
-    }
-  } else {
-    if (localStorage.getItem('auth')) {
-      next({
-        name:"Home"
-      })
-    }
-    next()
-  }
-  
-  // if(to.meta.auth){
-  //   if(localStorage.getItem('code')){
-  //     next()
-  //   } else {
-  //     next({
-  //       name:"Login"
-  //     })
-  //   }
-  // } else {
-  //   next()
-  // }
-})
+// router.beforeEach(function (to, from, next) {
+//   // console.log(to)
+//   // console.log(from)
+//   // next()
+//   if (to.name != 'Login') {
+//     if (localStorage.getItem('auth')) {
+//       next() 
+//     }
+//     else {
+//       next({
+//         name:"Login"
+//       })
+//     }
+//   } else {
+//     if (localStorage.getItem('auth')) {
+//       next({
+//         name:"Home"
+//       })
+//     }
+//     next()
+//   }
+// })
 
 export default router

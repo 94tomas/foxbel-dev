@@ -37,7 +37,7 @@ export default {
         } else {
           console.log('User cancelled login or did not fully authorize.');
         }
-      }, {perms: 'basic_access,email,manage_library,token'});
+      }, {perms: 'basic_access,email,manage_library,offline_access'});
     }
   },
 }
